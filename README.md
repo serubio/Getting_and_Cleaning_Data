@@ -18,3 +18,34 @@ dateDownloaded <- date() # This way we know when we downloaded the data. We coul
 data if we were having trouble later on
 dateDownloaded
 ~~~
+
+**Reading Local files**
+
+The read.table function is the main function for reading data into R. However, it reads the data into
+RAM, so big data can cause problems.
+
+~~~
+data <- read.table("data.csv", sep = ",", header = TRUE)
+~~~
+We can also use read.csv function (like read.table, it reads data into RAM)
+~~~
+data <- read.csv("data.csv", na.rm = TRUE)
+# read.csv sets sep="," and header=TRUE automatically
+# other options: skip= number of lines to skip before starting to read; nrows= how many rows of the file
+# to read; quote= it helps with unwanted values, usually solves problems reading data.
+~~~
+
+**Reading Excel files**
+
+~~~
+data <- read.xlsx("data.xlsx", sheetIndex = 1, header = TRUE, colIndex = 2:3, rowIndex = 1:4)
+# colIndex and rowIndex would only read those rows and columns
+~~~
+
+The XLConnect package has more options for writing and manipulating Excel files. In general it is advised
+to store your data in either a database or in comma separated files (.csv) or tab separated files (.tab/.txt)
+as they are easier to distribute
+
+**Reading XML**
+
+
