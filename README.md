@@ -76,4 +76,8 @@ Example
 ~~~
 
 `xmlSApply(rootNode, xmlValue)` extracts all the tag elements of the document
+
 `xpathSApply(rootNode, "//name", xmlValue)` extracts all of the nodes that correspond an element with title "name"
+
+**Reading JSON**
+
