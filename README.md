@@ -9,7 +9,7 @@ if (!file.exists("data")) {
 ~~~
 **Downloading files**
 
-In order to get data from the internet we use the download.file() function
+In order to get data from the internet we use the `download.file()` function
 
 ~~~
 fileUrl <- "https://data.link/to/data"
@@ -21,13 +21,13 @@ dateDownloaded
 
 **Reading Local files**
 
-The read.table function is the main function for reading data into R. However, it reads the data into
+The `read.table()` function is the main function for reading data into R. However, it reads the data into
 RAM, so big data can cause problems.
 
 ~~~
 data <- read.table("data.csv", sep = ",", header = TRUE)
 ~~~
-We can also use read.csv function (like read.table, it reads data into RAM)
+We can also use `read.csv()` function (like read.table, it reads data into RAM)
 ~~~
 data <- read.csv("data.csv", na.rm = TRUE)
 # read.csv sets sep="," and header=TRUE automatically
@@ -48,4 +48,32 @@ as they are easier to distribute
 
 **Reading XML**
 
+~~~
+library(XML)
+fileUrl <- "http://www.address.com/xml/some.xml
+doc <- xmlTreeParse(fileUrl, useInternal = TRUE)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+~~~
 
+Example
+
+`rootNode[[1]]`
+
+~~~
+<food>
+<name>Belgian Waffles</name>
+<price>$5.95</price>
+<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>
+<calories>650</calories>
+</food>
+~~~
+
+`rootNode[[1][1]]`
+
+~~~
+<name>Belgian Waffles</name>
+~~~
+
+`xmlSApply(rootNode, xmlValue)` extracts all the tag elements of the document
+``
